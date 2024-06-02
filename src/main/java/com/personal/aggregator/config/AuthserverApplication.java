@@ -17,6 +17,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration
 public class AuthserverApplication {
     public static void main(String[] args){
+        java.security.Security.setProperty("networkaddress.cache.ttl", "60");
+
+        //Propagate security context to child threads
+        java.security.Security.setProperty("spring.security.strategy", "MODE_INHERITABLETHREADLOCAL");
         SpringApplication.run(AuthserverApplication.class, args);
     }
 
